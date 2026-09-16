@@ -154,6 +154,11 @@
     "message_profile_show_right": "Sending a message to the organizer will give them the right to see your profile, in order to be able to respond.",
     "event_message_title": "{{username}} writes you about \"{{event}}\"",
     "edit": "Edit",
+    "clone": "Clone",
+    "clone_dialog_title": "Clone event",
+    "clone_new_date": "New start date and time",
+    "clone_success": "Event cloned successfully",
+    "clone_error": "Error cloning event",
     "backed_by": "Backed by {{organizationName}}"
   },
   "share": {
