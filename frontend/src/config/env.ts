@@ -13,6 +13,6 @@ export const ORGANIZATION_NAME = import.meta.env.VITE_ORGANIZATION_NAME as strin
 export const ORGANIZATION_URL = import.meta.env.VITE_ORGANIZATION_URL as string | undefined;
 
 /** When set, the login page offers this single Pod provider instead of the public list. */
-export const DEFAULT_POD_PROVIDER = import.meta.env.VITE_POD_PROVIDER_BASE_URL as string | undefined;
+export const DEFAULT_POD_PROVIDER = import.meta.env.VITE_DEFAULT_POD_PROVIDER as string | undefined;
 
 export const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN as string | undefined;

@@ -5,7 +5,10 @@ import appServerDataProvider from './appServerDataProvider';
 import { getCurrentCapabilityToken } from '../utils/capability';
 
 export const authProvider = apAuthProvider({
-  clientId: CLIENT_ID
+  clientId: CLIENT_ID,
+  // `AntdBackgroundChecks` (see `components/layout/PageLayout.tsx`) already polls the app status
+  // and covers the re-consent case, no need for the auth provider's own poll on top of it.
+  appStatusCheckInterval: false
 });
 
 /** Reads go through whichever credential the visitor actually has: the logged-in user's own

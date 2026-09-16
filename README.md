@@ -51,8 +51,11 @@ On the other hand, we will use the same Fuseki and Redis server as used for the 
 ```bash
 cd backend
 yarn install
+yarn run link-packages
 yarn run dev
 ```
+
+`yarn run link-packages` (see [below](#linking-to-semappsactivitypods-packages-optional)) is currently required, not optional, when developing against a Pod provider running ActivityPods' `next` branch: `interop:DataGrant`s were removed there, while the published `@activitypods/app@2.2.0` still expects them. Without the link, the app's registration silently fails on the backend side (`One or more required access needs have not been granted` in the Bull queue), no inbox/outbox listener gets created, and the frontend shows "The app is not listening to …". The linked framework is TypeScript, hence `yarn run dev` going through `tsx`.
 
 This will bootstrap the server and, if there are no errors, finish with a message telling you that Moleculer's ServiceBroker has started.
 
@@ -147,10 +150,16 @@ APP_LANG=en
 LETSENCRYPT_EMAIL=
 FUSEKI_PASSWORD=
 MAPBOX_ACCESS_TOKEN=
-POD_PROVIDER_BASE_URL=  # If you want to enforce a Pod provider for this app
+DEFAULT_POD_PROVIDER=  # If you want to enforce a Pod provider for this app
 ```
 
 If you want to customize more thoroughly the app, you can do the same with the `.env.production` files in the /backend and /frontend directories (copy them to a `.env.production.local` file). Note all env files ending with `.local` are not commited.
+
+To manage several deployments from the same checkout (e.g. a staging instance on another domain), keep one env file per deployment and pass it to `make` with `PROD_ENV_FILE`:
+
+```bash
+make build-prod PROD_ENV_FILE=.env.production.dev.local
+```
 
 ### Build and launch
 

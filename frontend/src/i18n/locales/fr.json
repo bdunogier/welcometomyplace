@@ -37,12 +37,8 @@
   },
   "pages": {
     "login": {
-      "title": "Connexion",
       "choosePodProvider": "Choisissez l'hébergeur qui héberge votre compte ActivityPods",
-      "fields": {
-        "issuer": "URL de l'hébergeur"
-      },
-      "signin": "Se connecter",
+      "podProvidersNotLoaded": "Impossible de charger la liste des hébergeurs",
       "backToLogin": "Retour à la connexion"
     },
     "signup_redirecting": "Redirection vers la création de compte..."
@@ -177,5 +173,12 @@
     "copy_link": "Copier le lien",
     "link_copied": "Lien copié",
     "link_copy_error": "Le lien n'a pas pu être copié"
+  },
+  "apods": {
+    "error": {
+      "app_status_unavailable": "Impossible de vérifier le statut de l'application",
+      "app_offline": "L'application est hors ligne",
+      "app_not_listening": "L'application n'écoute pas {{uri}}"
+    }
   }
 }

@@ -37,12 +37,8 @@
   },
   "pages": {
     "login": {
-      "title": "Sign in",
       "choosePodProvider": "Choose the Pod provider that hosts your ActivityPods account",
-      "fields": {
-        "issuer": "Pod provider URL"
-      },
-      "signin": "Sign in",
+      "podProvidersNotLoaded": "Unable to load the list of Pod providers",
       "backToLogin": "Back to login"
     },
     "signup_redirecting": "Redirecting to account creation..."
@@ -176,5 +172,12 @@
     "copy_link": "Copy link",
     "link_copied": "Link copied",
     "link_copy_error": "The link could not be copied"
+  },
+  "apods": {
+    "error": {
+      "app_status_unavailable": "Unable to check app status",
+      "app_offline": "The app backend is offline",
+      "app_not_listening": "The app is not listening to {{uri}}"
+    }
   }
 }
