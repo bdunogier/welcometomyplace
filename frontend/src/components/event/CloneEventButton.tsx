@@ -22,7 +22,7 @@ const CloneEventButton = ({ event }: Props) => {
 
   const originalStartTime = dayjs(event.startTime);
 
-  const { mutate: createEvent, isPending } = useCreate();
+  const { mutate: createEvent, mutation } = useCreate();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -97,7 +97,7 @@ const CloneEventButton = ({ event }: Props) => {
           <Button
             key="submit"
             type="primary"
-            loading={isPending}
+            loading={mutation.isPending}
             onClick={handleClone}
             disabled={!isFormValid}
           >
