@@ -46,7 +46,7 @@ const UserMenu = () => {
                 {
                   key: 'network',
                   label: (
-                    <a href={urlJoin(frontendUrl, 'network')} rel="noopener noreferrer">
+                    <a href={urlJoin(frontendUrl, 'network')} target="_blank" rel="noopener noreferrer">
                       {t('nav.network')}
                     </a>
                   ),
@@ -55,7 +55,7 @@ const UserMenu = () => {
                 {
                   key: 'apps',
                   label: (
-                    <a href={urlJoin(frontendUrl, 'apps')} rel="noopener noreferrer">
+                    <a href={urlJoin(frontendUrl, 'apps')} target="_blank" rel="noopener noreferrer">
                       {t('nav.apps')}
                     </a>
                   ),
@@ -64,7 +64,7 @@ const UserMenu = () => {
                 {
                   key: 'data',
                   label: (
-                    <a href={urlJoin(frontendUrl, 'data')} rel="noopener noreferrer">
+                    <a href={urlJoin(frontendUrl, 'data')} target="_blank" rel="noopener noreferrer">
                       {t('nav.data')}
                     </a>
                   ),
@@ -73,7 +73,7 @@ const UserMenu = () => {
                 {
                   key: 'settings',
                   label: (
-                    <a href={urlJoin(frontendUrl, 'settings')} rel="noopener noreferrer">
+                    <a href={urlJoin(frontendUrl, 'settings')} target="_blank" rel="noopener noreferrer">
                       {t('nav.settings')}
                     </a>
                   ),
