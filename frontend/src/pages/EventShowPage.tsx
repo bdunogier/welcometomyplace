@@ -16,6 +16,7 @@ import MarkdownContent from '../components/common/MarkdownContent';
 import BodyLabel from '../components/common/BodyLabel';
 import EditButton from '../components/common/EditButton';
 import ShareButton from '../components/share/ShareButton';
+import CloneEventButton from '../components/event/CloneEventButton';
 import JoinButton from '../components/event/JoinButton';
 import useActivityCollection from '../hooks/useActivityCollection';
 import useCapability from '../hooks/useCapability';
@@ -101,6 +102,7 @@ const EventShowContent = ({ capability }: { capability?: Capability }) => {
                 style={{ width: '100%', justifyContent: isMobile ? 'flex-start' : 'flex-end' }}
               >
                 <ShareButton event={event} />
+                <CloneEventButton event={event} />
                 <EditButton creatorUri={event['dc:creator']} to={`/events/${encodeURIComponent(event.id)}/edit`} />
               </Space>
             </Col>
