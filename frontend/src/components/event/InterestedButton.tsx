@@ -81,19 +81,9 @@ const InterestedButton = ({ event, ...buttonProps }: Props) => {
     setPending(false);
   };
 
-  const count = interestedUris.length;
-
-  // For the organizer: show count, no button
+  // For the organizer: don't show anything (interested users are shown in the event page section)
   if (isOrganizer) {
-    if (interestedLoading || count === 0) {
-      return null;
-    }
-    const countText = t('event.interested_count', { count });
-    return (
-      <div style={{ fontSize: 14, color: 'rgba(0,0,0,0.65)', marginTop: 8 }}>
-        {countText}
-      </div>
-    );
+    return null;
   }
 
   // For regular users: show button, no count. Only show if invited, not joined, and not finished

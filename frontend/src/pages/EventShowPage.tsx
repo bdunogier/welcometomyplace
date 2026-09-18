@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useOne, useParsed } from '@refinedev/core';
+import { useOne, useParsed, useGetIdentity } from '@refinedev/core';
 import { useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { App, Col, Grid, Row, Space, Spin } from 'antd';
@@ -91,6 +91,7 @@ const EventShowContent = ({ capability, linkInvalid }: { capability?: Capability
   const screens = useBreakpoint();
   const isMobile = !screens.sm;
   const leaveEvent = useLeaveEvent();
+  const { data: identity } = useGetIdentity();
 
   const { result: event, query } = useOne<EventRecord>({
     resource: 'event',
@@ -115,6 +116,7 @@ const EventShowContent = ({ capability, linkInvalid }: { capability?: Capability
     queryOptions: { enabled: !!format?.['skos:broader'] }
   });
   const { items: attendeeUris } = useActivityCollection(event?.['apods:attendees']);
+  const { items: interestedUris } = useActivityCollection(event?.likes);
 
   const image = useCapabilityImage(
     event && (Array.isArray(event.image) ? event.image[0] : event.image),
@@ -179,6 +181,19 @@ const EventShowContent = ({ capability, linkInvalid }: { capability?: Capability
                 <BodyLabel>{t('event.attendees')}</BodyLabel>
                 <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
                   {attendeeUris.map(uri => (
+                    <Col key={uri} xs={8} sm={4}>
+                      <AttendeeAvatar actorUri={uri} />
+                    </Col>
+                  ))}
+                </Row>
+              </>
+            )}
+
+            {event['dc:creator'] === identity?.id && interestedUris.length > 0 && (
+              <>
+                <BodyLabel>{t('event.interested')}</BodyLabel>
+                <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+                  {interestedUris.map(uri => (
                     <Col key={uri} xs={8} sm={4}>
                       <AttendeeAvatar actorUri={uri} />
                     </Col>
