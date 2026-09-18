@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useOne, useParsed } from '@refinedev/core';
+import { useOne, useParsed, useGetIdentity } from '@refinedev/core';
 import { Navigate, useLocation } from 'react-router';
 import { Col, Grid, Row, Space, Spin } from 'antd';
 
@@ -61,6 +61,7 @@ const EventShowContent = ({ capability }: { capability?: Capability }) => {
   const { id } = useParsed();
   const screens = useBreakpoint();
   const isMobile = !screens.sm;
+  const { data: identity } = useGetIdentity();
 
   const { result: event, query } = useOne<EventRecord>({ resource: 'event', id });
   const { result: format } = useOne<FormatRecord>({
@@ -74,6 +75,7 @@ const EventShowContent = ({ capability }: { capability?: Capability }) => {
     queryOptions: { enabled: !!format?.['skos:broader'] }
   });
   const { items: attendeeUris } = useActivityCollection(event?.['apods:attendees']);
+  const { items: interestedUris } = useActivityCollection(event?.likes);
 
   const image = useCapabilityImage(
     event && (Array.isArray(event.image) ? event.image[0] : event.image),
@@ -138,6 +140,19 @@ const EventShowContent = ({ capability }: { capability?: Capability }) => {
                 <BodyLabel>{t('event.attendees')}</BodyLabel>
                 <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
                   {attendeeUris.map(uri => (
+                    <Col key={uri} xs={8} sm={4}>
+                      <AttendeeAvatar actorUri={uri} />
+                    </Col>
+                  ))}
+                </Row>
+              </>
+            )}
+
+            {event['dc:creator'] === identity?.id && interestedUris.length > 0 && (
+              <>
+                <BodyLabel>{t('event.interested')}</BodyLabel>
+                <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+                  {interestedUris.map(uri => (
                     <Col key={uri} xs={8} sm={4}>
                       <AttendeeAvatar actorUri={uri} />
                     </Col>
