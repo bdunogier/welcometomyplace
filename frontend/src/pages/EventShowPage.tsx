@@ -18,6 +18,7 @@ import EditButton from '../components/common/EditButton';
 import ShareButton from '../components/share/ShareButton';
 import CloneEventButton from '../components/event/CloneEventButton';
 import JoinButton from '../components/event/JoinButton';
+import InterestedButton from '../components/event/InterestedButton';
 import useActivityCollection from '../hooks/useActivityCollection';
 import useCapability from '../hooks/useCapability';
 import useCapabilityImage from '../hooks/useCapabilityImage';
