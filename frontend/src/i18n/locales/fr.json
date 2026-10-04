@@ -168,11 +168,11 @@
     "backed_by": "Proposé par",
     "not_invited": "Vous n'avez pas été invité à cette rencontre",
     "mission": "Favoriser un vivre ensemble basé sur l'accueil, la confiance et l'entraide",
-    "interested": "Intéressé(e)",
+    "interested": "Intéressé(e) mais pas dispo",
     "not_interested": "Plus intéressé(e)",
     "interested_count_one": "1 intéressé(e)",
     "interested_count_other": "{{count}} intéressé(e)s",
-    "interested_success": "Vous êtes maintenant intéressé(e) par cette rencontre",
+    "interested_success": "L'organisateur a été averti de votre intérêt",
     "not_interested_success": "Vous n'êtes plus intéressé(e) par cette rencontre"
   },
   "share": {
