@@ -89,20 +89,6 @@ const JoinButton = ({ event, ...buttonProps }: Props) => {
         ...credentials
       });
 
-      // removes the like for the event if there is one
-      if (type === 'Join') {
-        await outbox.post({
-          type: 'Undo',
-          actor: outbox.owner,
-          object: {
-            type: 'Like',
-            actor: outbox.owner,
-            object: event.id
-          },
-          to: event['dc:creator']
-        });
-      }
-
       message.success(t(type === 'Join' ? 'event.event_joined' : 'event.event_left'));
       setJoined(type === 'Join');
       waitForAttendeeUpdate(type === 'Join');

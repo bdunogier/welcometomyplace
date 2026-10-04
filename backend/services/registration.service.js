@@ -133,6 +133,21 @@ module.exports = {
           actorUri
         });
 
+        // Remove the "interested" like if there is one
+        await ctx.call('pod-outbox.post', {
+          activity: {
+            type: 'Undo',
+            actor: activity.actor,
+            object: {
+              type: ACTIVITY_TYPES.LIKE,
+              actor: activity.actor,
+              object: event.id
+            },
+            to: event['dc:creator']
+          },
+          actorUri: activity.actor
+        });
+
         // Update the event statut (will tag the event as closed if the max attendees is reached)
         await ctx.call('status.tagUpdatedEvent', { event, actorUri });
 
