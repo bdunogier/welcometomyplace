@@ -60,12 +60,6 @@ This will bootstrap the server and, if there are no errors, finish with a messag
 
 You can see the application details at http://localhost:3001/app
 
-You now have access to Moleculer CLI. Enter this command to insert all the available event formats:
-
-```
-call importers.formats.freshImport
-```
-
 ### Launch the frontend
 
 Now you can launch the app frontend.
