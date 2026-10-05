@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@activitypods/app": "2.3.2",
+    "@rdfjs/data-model": "2.1.1",
     "@semapps/activitypub": "1.2.4",
     "@semapps/auth": "1.2.4",
     "@semapps/crypto": "1.2.4",

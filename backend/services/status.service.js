@@ -1,5 +1,5 @@
 const { arrayOf } = require('@semapps/ldp');
-const { triple, namedNode } = require('@rdfjs/data-model');
+const rdf = require('@rdfjs/data-model').default;
 
 const STATUS_COMING = 'http://activitypods.org/ns/core#Coming';
 const STATUS_FINISHED = 'http://activitypods.org/ns/core#Finished';
@@ -15,17 +15,17 @@ module.exports = {
       await ctx.call('events.patch', {
         resourceUri: event.id || event['@id'],
         triplesToAdd: [
-          triple(
-            namedNode(event.id || event['@id']),
-            namedNode('http://activitypods.org/ns/core#hasStatus'),
-            namedNode(statusToAdd)
+          rdf.quad(
+            rdf.namedNode(event.id || event['@id']),
+            rdf.namedNode('http://activitypods.org/ns/core#hasStatus'),
+            rdf.namedNode(statusToAdd)
           )
         ],
         triplesToRemove: [
-          triple(
-            namedNode(event.id || event['@id']),
-            namedNode('http://activitypods.org/ns/core#hasStatus'),
-            namedNode(statusToRemove)
+          rdf.quad(
+            rdf.namedNode(event.id || event['@id']),
+            rdf.namedNode('http://activitypods.org/ns/core#hasStatus'),
+            rdf.namedNode(statusToRemove)
           )
         ],
         actorUri
