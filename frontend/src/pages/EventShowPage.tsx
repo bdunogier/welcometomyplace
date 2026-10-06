@@ -117,6 +117,7 @@ const EventShowContent = ({ capability, linkInvalid }: { capability?: Capability
   });
   const { items: attendeeUris } = useActivityCollection(event?.['apods:attendees']);
   const { items: interestedUris } = useActivityCollection(event?.likes);
+  const interestedButNotAttendingUris = interestedUris?.filter(uri => !attendeeUris.includes(uri));
 
   const image = useCapabilityImage(
     event && (Array.isArray(event.image) ? event.image[0] : event.image),
@@ -189,11 +190,11 @@ const EventShowContent = ({ capability, linkInvalid }: { capability?: Capability
               </>
             )}
 
-            {event['dc:creator'] === identity?.id && interestedUris.length > 0 && (
+            {event['dc:creator'] === identity?.id && interestedButNotAttendingUris.length > 0 && (
               <>
                 <BodyLabel>{t('event.interested')}</BodyLabel>
                 <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
-                  {interestedUris.map(uri => (
+                  {interestedButNotAttendingUris.map(uri => (
                     <Col key={uri} xs={8} sm={4}>
                       <AttendeeAvatar actorUri={uri} />
                     </Col>
